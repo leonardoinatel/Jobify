@@ -9,6 +9,7 @@ const dbcon = sqlite.open(path.resolve(__dirname, 'jobify.sqlite'), { Promise })
 
 const port = process.env.PORT || 3000
 
+app.set('vies', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
