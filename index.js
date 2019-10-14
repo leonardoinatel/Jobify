@@ -9,6 +9,14 @@ const dbcon = sqlite.open(path.resolve(__dirname, 'jobify.sqlite'), { Promise })
 
 const port = process.env.PORT || 3000
 
+app.use('/admin', (req,res, next) => {
+    if(req.hostname === 'localhost'){
+        next()
+    }else{
+        res.send('Acesso nao permitido')
+    }
+})
+
 app.set('vies', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname,'public')))
